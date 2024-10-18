@@ -61,9 +61,6 @@ export function SingIn() {
               <Button type="submit" className="w-full">
                 Create an account
               </Button>
-              <Button variant="outline" className="w-full">
-                Sign up with Google
-              </Button>
             </div>
           </CardContent>
         </Card>
