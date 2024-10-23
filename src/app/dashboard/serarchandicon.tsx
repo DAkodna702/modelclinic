@@ -1,3 +1,5 @@
+"use client"
+
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -10,8 +12,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useAuth } from "../AuthContext";
 
 export default function BarraSuperior() {
+  const { logout } = useAuth();
+  const handleLogout = () => {
+    logout();
+  };
     
 
     return (
@@ -46,7 +53,7 @@ export default function BarraSuperior() {
             <DropdownMenuItem>Configuracion</DropdownMenuItem>
             <DropdownMenuItem>Perfil</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Salir</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleLogout}>Salir</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

@@ -29,7 +29,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/log-in", {
+      const response = await fetch("http://localhost:8080/auth2/worker/log-in", {
         // Cambiado a httpbin.org/post
         method: "POST",
         body: JSON.stringify({
@@ -43,7 +43,11 @@ export default function Login() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data); // Esto imprimirá la respuesta simulada de httpbin.org
+        localStorage.setItem("jwtToken", data.jwt); // Guardar el JWT
+        localStorage.setItem("username", data.username); // Guardar nombre de usuario
+
+        // Redirigir al dashboard
+        router.push("/dashboard");
       } else {
         console.error("Failed to log in");
       }
@@ -99,7 +103,7 @@ export default function Login() {
             </div>
             <RainbowButton
               className="w-full bg-white py-2"
-              onClick={() => router.push("/dashboard")}
+              onClick={handleLogin}
             >
               Iniciar Sesión
             </RainbowButton>

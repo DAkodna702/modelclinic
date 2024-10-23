@@ -1,6 +1,7 @@
 import React from "react";
 import SliderBarra from "@/app/dashboard/sliderbarra";
 import BarraSuperior from "@/app/dashboard/serarchandicon";
+import ProtectedRoute from "../ProtecteRoute";
 
 export default function DashboardLayout({
   children,
@@ -8,9 +9,11 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SliderBarra>
-      <BarraSuperior />
-      {children}
-    </SliderBarra>
+    <ProtectedRoute>
+      <SliderBarra>
+        <BarraSuperior />
+        {children}
+      </SliderBarra>
+    </ProtectedRoute>
   );
 }
